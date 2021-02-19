@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport"
+				content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+	<!-- Bootstrap CSS -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
+				integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+
+	<title>Survey</title>
+</head>
+<body>
+<h1>Midterm Survey!</h1>
+
+<div class="container">
+	<div class="input-group">
+		<label for="name"><span class="text-danger">*</span> Name:</label>
+		<input type="text" id="name" name="name" value="{{ @name }}">
+		<check if="{{ isset(@errors['name']) }}">
+			<span class="text-danger">{{ @errors['name'] }}</span>
+		</check>
+	</div>
+
+	<repeat group="{{@choices}}" value="{{@choice}}">
+		<div class="form-check">
+			<input class="form-check-input" type="checkbox" value="{{@choice}}" id="{{@choice}}" name="choices[]">
+			<label class="form-check-label text-capitalize" for="{{@choice}}">{{@choice}}</label>
+		</div>
+	</repeat>
+	<check if="{{ isset(@errors['choices']) }}">
+		<span class="text-danger">{{ @errors['choices'] }}</span>
+	</check>
+</div>
+</body>
+</html>
