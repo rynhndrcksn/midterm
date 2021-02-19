@@ -5,5 +5,5 @@
  * @return string[]
  */
 function getChoices(): array {
-	return array('this midterm was easy', 'f3 is unreliable', 'maybe this will eventually show up?');
+	return array('this midterm was easy', 'too busy questioning life choices', 'maybe this will eventually show up?');
 }
