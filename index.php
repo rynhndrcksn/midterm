@@ -18,7 +18,29 @@ $f3->route('GET /', function() {
 
 // define a default route (home page)
 $f3->route('GET|POST /survey', function($f3) {
-	
+
+	// if the form has been submitted
+	if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+		// gather info from order and validate it
+		if (isset($_POST['name'])) {
+			$_SESSION['name'] = $_POST['name'];
+		} else {
+			$f3->set('errors["name"]', 'Name cannot be blank');
+		}
+
+		if (isset($_POST['choices'])) {
+				// since our object is stored in $_SESSION, we can just set the condiments with implode
+				$_SESSION['choices'] = implode(', ', $_POST['choices']);
+			} else {
+				$f3->set('errors["choices"]', 'Not a valid choice!');
+			}
+		}
+
+		// if there are no errors, redirect to /order2
+		if (empty($f3->get('errors'))) {
+			$f3->reroute('/summary');
+		}
+
 	$f3->set('choices', getChoices());
 
 	// create a new view, then sends it to the client

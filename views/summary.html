@@ -10,12 +10,16 @@
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
 				integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
 
-	<title>Midterm</title>
+	<title>Summary</title>
 </head>
 <body>
 <div class="container">
 	<h1>Midterm Survey</h1>
-	<a href="survey">Take my midterm survey</a>
+
+	<h2>Thank you for your order, {{@SESSION.name}}</h2>
+
+	<p>You chose: {{@SESSION.choices}}</p>
+
 </div>
 </body>
 </html>
