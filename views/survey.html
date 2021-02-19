@@ -13,7 +13,7 @@
 	<title>Survey</title>
 </head>
 <body>
-<div class="container">
+<form action="#" method="POST" class="container">
 	<h1>Midterm Survey!</h1>
 
 	<div class="input-group">
@@ -27,15 +27,16 @@
 	<repeat group="{{@choices}}" value="{{@choice}}">
 		<div class="form-check">
 			<input class="form-check-input" type="checkbox" value="{{@choice}}" id="{{@choice}}" name="choices[]"
-			<check if="{{ in_array(@choice, @SESSION.choices) }}">
+			<check if="{{ @choice == @SESSION.choices }}">
 				checked
-			</check>>>
+			</check>>
 			<label class="form-check-label text-capitalize" for="{{@choice}}">{{@choice}}</label>
 		</div>
 	</repeat>
 	<check if="{{ isset(@errors['choices']) }}">
 		<span class="text-danger">{{ @errors['choices'] }}</span>
 	</check>
-</div>
+	<button type="submit" class="btn btn-primary">Submit</button>
+</form>
 </body>
 </html>

@@ -16,7 +16,7 @@ $f3->route('GET /', function() {
 	echo $view->render('views/home.html');
 });
 
-// define a default route (home page)
+// define a survey route
 $f3->route('GET|POST /survey', function($f3) {
 
 	// if the form has been submitted
@@ -46,4 +46,11 @@ $f3->route('GET|POST /survey', function($f3) {
 	// create a new view, then sends it to the client
 	$view = new Template();
 	echo $view->render('views/survey.html');
+});
+
+// define a summary route
+$f3->route('GET|POST /summary', function() {
+	// create a new view, then sends it to the client
+	$view = new Template();
+	echo $view->render('views/summary.html');
 });
